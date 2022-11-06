@@ -8,7 +8,7 @@ import json
 def getExternalCourses():
     # This function should return the xml raw structure
 
-    data = {'id': "12920012-A",
+    data = [{'id': "12920012-A",
             'nombre': "Calculo Diferencial",
             'creditos': 3,
             'tipologia': "Disciplinar Obligatoria",
@@ -17,7 +17,7 @@ def getExternalCourses():
             'facultad': "Ingeniería",
             'descripcion': "Una materia más...",
             'prerequisitos': "Matemáticas Básicas, Inglés 1",
-            'codigo': 12392312}
+            'codigo': 12392312}]
     return data
     # courses = client.service.getcourses()
     # print(type(courses))
