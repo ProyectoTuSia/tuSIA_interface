@@ -5,7 +5,7 @@ from gql.transport.requests import RequestsHTTPTransport
 
 
 transport = RequestsHTTPTransport(
-    url="http://localhost:3001/", verify=True, retries=3,)
+    url="http://localhost:3001", verify=True, retries=3,)
 
 client = Client(transport=transport, fetch_schema_from_transport=True)
 
@@ -31,7 +31,7 @@ query GetSubject {
 
     data = client.execute(query)
     data = data['getSubject']
-    print(data)
+    # print(data)
     print(type(data))
 
     return data
