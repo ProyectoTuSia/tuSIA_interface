@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns=[
   # path('',views.index),
-  path('/getCourseById',views.consulta()),
+  path('/getAllCourses',views.consulta()),
 
 ]

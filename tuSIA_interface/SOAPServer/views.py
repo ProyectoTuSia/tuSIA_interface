@@ -30,10 +30,6 @@ from .data import getAllCourses
 
 class SoapService(ServiceBase):
 
-    @rpc(Double(), Double(), _returns=Double)
-    def suma(ctx, a, b):
-        return a + b
-
     @rpc(_returns=Array(AnyDict))
     def getcourses(ctx):
         allCourses = getAllCourses()
