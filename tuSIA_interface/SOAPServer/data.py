@@ -5,7 +5,7 @@ from gql.transport.requests import RequestsHTTPTransport
 
 
 transport = RequestsHTTPTransport(
-    url="http://localhost:3001", verify=True, retries=3,)
+    url="https://104.198.33.128:3001", verify=True, retries=3,)
 
 client = Client(transport=transport, fetch_schema_from_transport=True)
 
