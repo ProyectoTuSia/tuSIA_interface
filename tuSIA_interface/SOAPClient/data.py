@@ -1,27 +1,28 @@
 import zeep
 import json
 
-# wsdl = 'http://localhost:8000/server/getCourseById?wsdl'
-# client = zeep.Client(wsdl=wsdl)
+wsdl = 'https://interfaceSOAPSIA2B.crvargasm.repl.co/wsdl?wsdl'
+settings = zeep.Settings(strict=False, xml_huge_tree=True)
+client = zeep.Client(wsdl=wsdl, settings=settings)
 
 
 def getExternalCourses():
-    # This function should return the xml raw structure
+    final_json = []
+    data = client.service.Documents(10)
+    courses = zeep.helpers.serialize_object(data)
+    courses = courses['_raw_elements']
 
-    data = [{'id': "12920012-A",
-            'nombre': "Calculo Diferencial",
-            'creditos': 3,
-            'tipologia': "Disciplinar Obligatoria",
-            'sede': "Bogotá",
-            'nivelestudio': "Maestría",
-            'facultad': "Ingeniería",
-            'descripcion': "Una materia más...",
-            'prerequisitos': "Matemáticas Básicas, Inglés 1",
-            'codigo': 12392312}]
-    return data
-    # courses = client.service.getcourses()
-    # print(type(courses))
+    for c in courses:
+        aux = {}
+        for info in c:
+            tag = info.tag.split("}")
+            aux[tag[1]] = info.text.strip()
+        final_json.append(aux)
+    return final_json
 
-    # for e in courses:
-    #     for k in e:
-    #         print(type(k.text))
+# courses = client.service.getcourses()
+# print(type(courses))
+
+# for e in courses:
+#     for k in e:
+#         print(type(k.text))
