@@ -5,7 +5,7 @@ from gql.transport.requests import RequestsHTTPTransport
 
 
 transport = RequestsHTTPTransport(
-    url="http://35.188.174.1/:80", verify=True, retries=3,)
+    url="http://tusia-proxy-ag-service.default.svc.cluster.local/:80", verify=True, retries=3,)
 
 client = Client(transport=transport, fetch_schema_from_transport=True)
 
