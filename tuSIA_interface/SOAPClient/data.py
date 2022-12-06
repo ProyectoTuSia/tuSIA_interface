@@ -1,9 +1,12 @@
 import zeep
+from zeep.transports import Transport
 import json
 
-wsdl = 'https://interfaceSOAPSIA2B.crvargasm.repl.co/wsdl?wsdl'
-settings = zeep.Settings(strict=False, xml_huge_tree=True)
-client = zeep.Client(wsdl=wsdl, settings=settings)
+wsdl = 'https://34.174.136.227:80/wsdl?wsdl'
+transport = Transport()
+transport.session.verify = False
+settings = zeep.Settings(strict=False, xml_huge_tree=True,force_https=False)
+client = zeep.Client(wsdl=wsdl, settings=settings, transport=transport)
 
 
 def getExternalCourses():
